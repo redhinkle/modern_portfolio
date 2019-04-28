@@ -1,6 +1,78 @@
-$primary-color: #444;
+@import "config";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
+  @include background;
   background: $primary-color;
   color: white;
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+// Headings
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+
+  &.lg-heading {
+    //h1
+    font-size: 6rem;
+  }
+  &.sm-heading {
+    //h2/h3
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(
+      lighten($color: $primary-color, $amount: 2),
+      0.5
+    ); //lightens h2/h3 class backgrounds
+  }
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  z-index: 2; //menu will stay in very front
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color; // h2 color
+}
+
+main {
+  padding: 4rem;
+  height: 100%;
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+
+      &:hover {
+        color: $secondary-color; //hovered links
+        @include easOut(); //transition to secondary color
+      }
+    }
+  }
+
+  &#home {
+    overflow: hidden; //no scrolling
+    h1 {
+      margin-top: 20vh; // moves heading down towards center
+    }
+  }
 }
